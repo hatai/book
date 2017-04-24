@@ -1,0 +1,48 @@
+<h2>Show book</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @book.name %>
+  </li>
+
+  <li>
+    <strong>Price:</strong>
+    <%= @book.price %>
+  </li>
+
+  <li>
+    <strong>Published:</strong>
+    <%= @book.published %>
+  </li>
+
+  <li>
+    <strong>Page:</strong>
+    <%= @book.page %>
+  </li>
+
+  <li>
+    <strong>Isbn 10:</strong>
+    <%= @book.isbn_10 %>
+  </li>
+
+  <li>
+    <strong>Isbn 13:</strong>
+    <%= @book.isbn_13 %>
+  </li>
+
+  <li>
+    <strong>Publisher:</strong>
+    <%= @book.publisher %>
+  </li>
+
+  <li>
+    <strong>Number:</strong>
+    <%= @book.number %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: book_path(@conn, :edit, @book) %>
+<%= link "Back", to: book_path(@conn, :index) %>
