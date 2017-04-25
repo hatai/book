@@ -26,9 +26,8 @@ RUN curl http://nginx.org/keys/nginx_signing.key | apt-key add - \
   && wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb \
   && dpkg -i erlang-solutions_1.0_all.deb \
   && apt-get update \
-  && rm erlang-solutions_1.0_all.deb
-
-RUN apt-get install -y build-essential nodejs nginx postgresql-9.6 \
+  && rm erlang-solutions_1.0_all.deb \
+  && apt-get install -y build-essential nodejs nginx postgresql-9.6 \
   && apt-get install -y esl-erlang elixir \
   && apt-get autoremove -y \
   && apt-get clean
