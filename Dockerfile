@@ -7,15 +7,18 @@ WORKDIR /app
 
 # Elixir requires UTF-8
 ENV LANG C.UTF-8
-ENV PORT=4000
+ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update \
-  && apt-get upgrade -y \
+RUN echo 'Acquire::http::Pipeline-Depth "0";' >> /etc/apt/apt.conf.d/00no-pipeline \
+  && apt-get update \
+  && apt-get install -y --no-install-recommends apt-utils \
   && apt-get install -y curl wget git make sudo apt-file \
+  && apt-get upgrade -y \
   && apt-file update \
   && apt-file search add-apt-repository \
-  && apt-get install -y software-properties-common \
-  && curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add - \
+  && apt-get install -y software-properties-common
+
+RUN curl http://nginx.org/keys/nginx_signing.key | apt-key add - \
   && add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" \
   && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - \
   && sh -c "echo 'deb http://nginx.org/packages/ubuntu/ xenial nginx' >> /etc/apt/sources.list" \
@@ -31,7 +34,7 @@ RUN apt-get install -y build-essential nodejs nginx postgresql-9.6 \
   && apt-get clean
 
 RUN mix local.hex \
-  && mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
+  && mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
 
 # TODO:
 #COPY
@@ -52,6 +55,6 @@ RUN mix local.hex \
 #  && PORT=4001 MIX_ENV=prod mix phoenix.server
 
 
-EXPOSE PORT
+EXPOSE 4000
 
 CMD ["/bin/bash"]
