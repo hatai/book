@@ -17,12 +17,21 @@ defmodule BookManagement.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/users", UserController
-    resources "/books", BookController
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BookManagement do
-  #   pipe_through :api
-  # end
+  scope "/api", BookManagement do
+    pipe_through :api
+
+    scope "/user" do
+      resources "/users", UserController
+    end
+
+    scope "/book" do
+      resources "/books", BookController
+      get "/search", BookController
+      post "/rental", BookController
+      post "/return", BookController
+    end
+  end
 end
