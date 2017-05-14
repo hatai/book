@@ -2443,6 +2443,15 @@ process@~0.11.0, process@~0.11.2:
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
 
+progeny@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/progeny/-/progeny-0.11.0.tgz#08dd5ecd9fddf457daa2b8ea1f148fa0326a074c"
+  dependencies:
+    async-each "^1.0.0"
+    chalk "^1.1.3"
+    fs-mode "^1.0.1"
+    glob "^7.0.3"
+
 progeny@~0.5.1:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/progeny/-/progeny-0.5.2.tgz#1fef1cccba6b057f344e780dbf7bdc8c5135121b"
@@ -2721,6 +2730,13 @@ rimraf@2, rimraf@^2.5.1, rimraf@^2.6.1:
   dependencies:
     glob "^7.0.5"
 
+riot-brunch@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/riot-brunch/-/riot-brunch-0.1.1.tgz#19e4e6300029d7a1b6d2953296241b44e1a13da7"
+  dependencies:
+    progeny "^0.11.0"
+    riot "^3.3"
+
 riot-cli@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/riot-cli/-/riot-cli-3.0.2.tgz#9f3c1e98517d15e5c36fc907e6780282ab47a2a2"
@@ -2761,7 +2777,7 @@ riot-tmpl@^3.0.4:
   dependencies:
     eslint-config-riot "^1.0.0"
 
-riot@^3.0.7, riot@^3.5.0:
+riot@^3.0.7, riot@^3.3, riot@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/riot/-/riot-3.5.0.tgz#b5bcfbe7432fdfe50000361486bce767fd73ab05"
   dependencies:
