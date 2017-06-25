@@ -1,5 +1,14 @@
 # BookManagement
 
+## Enviroment
+
+* Ubuntu: 17.04
+* Erlang: 20.0
+* Elixir: 1.4.5
+* PostgreSQL: 20.0
+* Node.js: 6.11.0
+* Phoenix: 1.2.3
+
 ## Install asdf, Elixir and Erlang
 
 ```bash
