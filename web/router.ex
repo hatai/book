@@ -1,6 +1,11 @@
 defmodule BookManagement.Router do
   use BookManagement.Web, :router
 
+  pipeline :browser_session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -17,6 +22,9 @@ defmodule BookManagement.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/sign_in", SessionController, :new
+    post "/sign_in", SessionController, :create
+    get "/sign_out", SessionController, :delete
   end
 
   # Other scopes may use custom stacks.
@@ -29,9 +37,9 @@ defmodule BookManagement.Router do
 
     scope "/book" do
       resources "/books", BookController
-      get "/search", BookController
-      post "/rental", BookController
-      post "/return", BookController
+      # get "/search", BookController
+      # post "/rental", BookController
+      # post "/return", BookController
     end
   end
 end

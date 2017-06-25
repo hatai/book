@@ -17,7 +17,7 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.3.0
 echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
 echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
 source ~/.bashrc
-sudo apt-get -y install build-essential autoconf m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libssh-dev unixodbc-dev
+sudo apt-get -y install inotify-tools build-essential autoconf m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libssh-dev unixodbc-dev
 # install erlang
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 asdf install erlang 20.0
@@ -36,6 +36,8 @@ asdf global nodejs 6.11.0
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update && sudo apt-get install yarn
+echo '\nexport PATH="$(yarn global bin):$PATH"' >> ~/.bashrc
+source ~/.bashrc
 # install hex
 mix local.hex
 # install phoenix

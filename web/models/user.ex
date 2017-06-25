@@ -2,10 +2,10 @@ defmodule BookManagement.User do
   use BookManagement.Web, :model
 
   schema "users" do
+    field :username, :string
     field :name, :string
     field :email, :string
-    field :password, :string
-
+    field :password, :string, virtual: true
     timestamps()
   end
 
@@ -14,7 +14,13 @@ defmodule BookManagement.User do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :email, :password])
-    |> validate_required([:name, :email, :password])
+    |> cast(params, [:username, :name, :email])
+    |> validate_required([:username, :name, :email])
+  end
+
+  def login_changeset(struct, params \\ %{}) do
+    struct 
+    |> cast(params, [:username, :password])
+    |> validate_required([:username, :password])
   end
 end
