@@ -36,8 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :book_management, BookManagement.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "phoenix",
+  password: "1192kamakura",
   database: "book_management_dev",
   hostname: "localhost",
   pool_size: 10
