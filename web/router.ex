@@ -25,21 +25,18 @@ defmodule BookManagement.Router do
     get "/sign_in", SessionController, :new
     post "/sign_in", SessionController, :create
     get "/sign_out", SessionController, :delete
+
+    scope "/users" do
+      resources "/", UserController
+    end
+
+    scope "/books" do
+      resources "/", BookController
+    end
   end
 
   # Other scopes may use custom stacks.
   scope "/api", BookManagement do
     pipe_through :api
-
-    scope "/user" do
-      resources "/users", UserController
-    end
-
-    scope "/book" do
-      resources "/books", BookController
-      # get "/search", BookController
-      # post "/rental", BookController
-      # post "/return", BookController
-    end
   end
 end

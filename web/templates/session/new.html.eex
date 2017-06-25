@@ -1,16 +1,34 @@
-<h2>Sign in</h2>
-<% form_for @changeset, session_path(@conn, :create), [method: :post], fn f -> %>
-  <div class="form-group">
-    <label>Usename</label>
-    <%= text_input f, :username, class: "form-control" %>
-  </div>
+<v-layout row wrap>
+  <v-flex xs4></v-flex>
+  <v-flex xs4>
+    <v-card class="mt-5">
+      <v-card-title class="green">
+        <span class="white--text">Sign in</span>
+      </v-card-title>
+      <v-card-text>
+        <%= form_for @changeset, session_path(@conn, :create), [method: :post], fn f -> %>
+          <div>
+            <v-text-field 
+              name="user[username]"
+              label="Username"
+              id="user_username"
+            ></v-text-field>
+          </div>
 
-  <div class="form-group">
-    <label>Password</label>
-    <%= password_input f, :username, class: "form-control" %>
-  </div>
+          <div>
+            <v-text-field 
+              name="user[password]"
+              label="Password"
+              id="user_password"
+            ></v-text-field>
+          </div>
 
-  <div class="form-group">
-    <%= submit "Sign in", class: "btn btn-primary" %>
-  <div>
-<% end %>
+          <div class="text-xs-center">
+            <v-btn outline class="indigo--text" type="submit">Sign in</v-btn>
+          </div>
+        <% end %>
+      </v-card-text>
+    </v-card>
+  </v-flex>
+  <v-flex xs4></v-flex>
+</v-layout>
